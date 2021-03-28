@@ -6,7 +6,7 @@ import Navigation from './src/navigations/Navigation';
 import firebaseApp from './src/utils/firebase';
 import { decode, encode } from 'base-64';
 
-LogBox.ignoreLogs(["Setting a timer"]);
+LogBox.ignoreLogs(['Setting a timer', 'useNativeDriver']);
 
 if (!global.btoa) global.btoa = encode;
 if (!global.atob) global.atob = decode;
