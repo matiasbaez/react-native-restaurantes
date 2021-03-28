@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Rating } from 'react-native-elements';
+import { Rating, ListItem } from 'react-native-elements';
+import { map } from 'lodash';
 
 import Loading from '../../components/Loading';
 import CarouselImages from '../../components/Carousel';
@@ -79,13 +80,45 @@ function RestaurantTitle(props) {
 function RestaurantInfo(props) {
     const { name, address, location } = props;
 
+    const listInfo = [
+        {
+            text: address,
+            iconName: "map-marker",
+            iconType: "material-community",
+            action: null
+        },
+        {
+            text: "111 222 333",
+            iconName: "phone",
+            iconType: "material-community",
+            action: null
+        },
+        {
+            text: "email@restaurante.com",
+            iconName: "at",
+            iconType: "material-community",
+            action: null
+        }
+    ]
+
     return (
         <View style={styles.restaurantViewInfo}>
             <Text style={styles.restaurantInfoTitle}></Text>
             <Map
                 height={100}
-                name={restaurant.name}
-                location={restaurant.location} />
+                name={name}
+                location={location} />
+            { map(listInfo, (item, index) => (
+                <ListItem
+                    key={index}
+                    title={item.text}
+                    leftIcon={{
+                        name: item.iconName,
+                        type: item.iconType,
+                        color: "#00a680"
+                    }}
+                    containerStyle={styles.listItemContainer} />
+            )) }
         </View>
     )
 }
@@ -119,5 +152,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
         marginBottom: 10
+    },
+    listItemContainer: {
+        borderBottomColor: "#d8d8d8",
+        borderBottomWidth: 1
     }
 })
