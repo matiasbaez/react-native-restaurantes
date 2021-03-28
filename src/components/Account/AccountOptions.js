@@ -67,6 +67,7 @@ export default function AccountOptions(props) {
                         type={menu.iconType}
                         name={menu.iconNameLeft}
                         color={menu.iconColorLeft} />
+
                     <ListItem.Content>
                         <ListItem.Title>{menu.title}</ListItem.Title>
                     </ListItem.Content>

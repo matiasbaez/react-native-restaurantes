@@ -1,0 +1,9 @@
+Google API Key
+AIzaSyCPasN1ZX3JHKQlku8zLpueKpgq-qFlB_g
+
+Fingerprint
+Accessing credentials for matiasbaez in project restaurantes
+Google Certificate Fingerprint:     94:DD:F8:AD:28:EC:FF:63:A0:C3:C1:26:6C:86:A5:A4:DC:31:04:40
+Google Certificate Hash (SHA-1):    94DDF8AD28ECFF63A0C3C1266C86A5A4DC310440
+Google Certificate Hash (SHA-256):  2F830873ED79A44301FE57167BD99F718001F8B72A73149811B16F895F6D21D9
+Facebook Key Hash:                  lN34rSjs/2Ogw8EmbIalpNwxBEA=
