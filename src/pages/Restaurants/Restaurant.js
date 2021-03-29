@@ -1,12 +1,14 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { StyleSheet, Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useFocusEffect } from '@react-navigation/native';
 import { Rating, ListItem } from 'react-native-elements';
 import { map } from 'lodash';
 
-import Loading from '../../components/Loading';
+import ListReviews from '../../components/Restaurant/ListReviews';
 import CarouselImages from '../../components/Carousel';
+import Loading from '../../components/Loading';
 import Map from '../../components/Map';
 
 import { firebaseApp } from '../../utils/firebase';
@@ -25,17 +27,19 @@ export default function Restaurant(props) {
 
     navigation.setOptions({ title: name });
 
-    useEffect(() => {
-        db.collection('restaurans')
-        .doc(id)
-        .get()
-        .then((response) => {
-            const data = response.data();
-            data.id = response.id;
-            setRestaurant(data);
-            setRating(data.rating)
-        })
-    }, [])
+    useFocusEffect(
+        useCallback(() => {
+            db.collection('restaurans')
+            .doc(id)
+            .get()
+            .then((response) => {
+                const data = response.data();
+                data.id = response.id;
+                setRestaurant(data);
+                setRating(data.rating)
+            })
+        }, [])
+    );
 
     if (!restaurant) return <Loading isVisible={true} text="Cargando..." />
     
@@ -49,12 +53,17 @@ export default function Restaurant(props) {
             <RestaurantTitle
                 name={restaurant.name}
                 description={restaurant.description}
-                rating={restaurant.rating} />
+                rating={rating} />
 
             <RestaurantInfo
                 name={restaurant.name}
                 address={restaurant.address}
                 location={restaurant.location} />
+
+            <ListReviews
+                navigation={navigation}
+                restaurantId={restaurant.id}
+                setRating={setRating} />
         </ScrollView>
     )
 }
