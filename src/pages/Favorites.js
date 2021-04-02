@@ -180,7 +180,7 @@ function Restaurant(props) {
             <TouchableOpacity
                 onPress={() => navigation.navigate('restaurants', {screen: 'restaurant', params: { id }}) }>
                     <Image
-                        resizeMethod="cover"
+                        resizeMode="cover"
                         style={styles.image}
                         PlaceholderContent={<ActivityIndicator color="#fff" />}
                         source={images[0] ? {uri: images[0]} : require('../../assets/img/no-image.png')} />
