@@ -78,7 +78,7 @@ function Review(props) {
                     size="large"
                     rounded
                     containerStyle={styles.userAvatar}
-                    source={ userAvatar ? { uri: userAvatar } : require('../../../assets/img/avatar-default.jpg') } />
+                    source={ userAvatar ? { uri: userAvatar } : require('../../../assets/img/default-avatar.jpg') } />
             </View>
 
             <View style={styles.viewInfo}>
