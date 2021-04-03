@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 
 export default function ChangeDisplayName(props) {
     const { displayName, setShowModal, toastRef, setReloadUserInfo } = props;

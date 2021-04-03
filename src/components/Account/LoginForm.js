@@ -8,7 +8,7 @@ import { isEmpty } from 'lodash';
 import Loading from '../Loading';
 
 import { validateEmail } from '../../utils/Validations';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 
 export default function LoginForm(props) {
 

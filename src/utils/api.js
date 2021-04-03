@@ -1,5 +1,5 @@
 
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 
 export function reauthenticate(password) {
     const user = firebase.auth().currentUser;
