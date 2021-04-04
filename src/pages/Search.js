@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, FlatList, Image } from "react-native";
-import { SearchBar, ListItem, Icon } from 'react-native-elements';
+import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
+import { Avatar, SearchBar, ListItem, Icon } from 'react-native-elements';
 
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import { FireSQL } from 'firesql';
 
 const fireSQL = new FireSQL(firebase.firestore(), { includeId: "id" })
@@ -17,7 +17,7 @@ export default function Search(props) {
 
     useEffect(() => {
         if (search) {
-            fireSQL.query(`SELECT * FROM restaurants WHERE name LIKE '%${search}%'`)
+            fireSQL.query(`SELECT * FROM restaurants WHERE name LIKE '${search}%'`)
             .then(response => {
                 setRestaurants(response);
             });
@@ -58,14 +58,14 @@ function Restaurant(props) {
     const { id, name, images } = restaurant.item;
 
     return (
-        <ListItem
-            title={name}
-            leftAvatar={{
-                source: images[0] ? {uri: images[0]} : require("../../assets/img/no-image.png")
-            }}
-            rightIcon={<Icon type="material-community" name="chrevron-right" />}
-            onPress={() => navigation.navigate("restaurants", { screen: "restaurant", params: { id } })} />
-    )
+        <ListItem onPress={() => navigation.navigate("restaurants", { screen: "restaurant", params: { id } })}>
+            <Avatar source={images[0] ? {uri: images[0]} : require("../../assets/img/no-image.png")} />
+            <ListItem.Content containerStyle={styles.listItemContainer}>
+                <ListItem.Title>{name}</ListItem.Title>
+            </ListItem.Content>
+            <ListItem.Chevron />
+        </ListItem>
+    );
 }
 
 const styles = StyleSheet.create({

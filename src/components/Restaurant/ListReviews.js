@@ -4,7 +4,7 @@ import { Avatar, Button, Rating } from 'react-native-elements';
 import { map } from 'lodash';
 
 import { firebaseApp } from '../../utils/firebase';
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import 'firebase/firestore';
 
 const db = firebase.firestore(firebaseApp)
@@ -32,7 +32,7 @@ export default function ListReviews(props) {
                 setReviews(resultReviews);
             });
         })
-    }, [input])
+    }, [])
 
     return (
         <View>

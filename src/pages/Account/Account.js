@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 import UserGuest from './UserGuest';
 import UserLogged from './UserLogged';

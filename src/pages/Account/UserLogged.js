@@ -8,7 +8,7 @@ import Loading from '../../components/Loading';
 import UserInfo from '../../components/Account/UserInfo';
 import AccountOptions from '../../components/Account/AccountOptions';
 
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 export default function UserLogged() {
 

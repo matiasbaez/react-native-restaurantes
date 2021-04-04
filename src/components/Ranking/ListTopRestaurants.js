@@ -6,8 +6,6 @@ export default function ListTopRestaurants(props) {
 
     const { navigation, restaurants } = props;
 
-    const [state, setstate] = useState(initialState)
-
     return (
         <FlatList
             keyExtractor={(item, index) => index.toString()}

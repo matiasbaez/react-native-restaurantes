@@ -8,7 +8,7 @@ import Toast from 'react-native-easy-toast';
 import Loading from '../components/Loading';
 
 import { firebaseApp } from '../utils/firebase';
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import 'firebase/firestore';
 
 const db = firebase.firestore(firebaseApp);
@@ -115,7 +115,7 @@ function UserNotLogged(props) {
     return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
             <Icon type="material-community" name="alert-outline" size={50} />
-            <Text style={{ fontSize: 20, fontWeight: "center", textAlign: "center" }}>
+            <Text style={{ fontSize: 20, fontWeight: "bold", textAlign: "center" }}>
                 Debes iniciar sesión para ver está sección
             </Text>
             <Button

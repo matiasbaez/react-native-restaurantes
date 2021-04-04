@@ -5,7 +5,7 @@ import { Avatar } from 'react-native-elements';
 
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 export default function UserInfo(props) {
 

@@ -1,12 +1,12 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { View } from "react-native";
 import Toast from 'react-native-easy-toast';
 
 import ListTopRestaurants from '../components/Ranking/ListTopRestaurants';
 
 import { firebaseApp } from '../utils/firebase';
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import 'firebase/firestore';
 
 const db = firebase.firestore(firebaseApp);
@@ -33,7 +33,7 @@ export default function TopRestaurants(props) {
 
             setRestaurants(restaurants);
         })
-    }, [input])
+    }, [])
 
     return (
         <View>

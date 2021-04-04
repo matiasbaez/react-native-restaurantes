@@ -6,7 +6,7 @@ import { size } from 'lodash';
 
 import { reauthenticate } from '../../utils/api';
 
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 export default function ChangePasswordForm(props) {
     const { setShowModal, toastRef } = props;

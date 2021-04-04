@@ -6,7 +6,7 @@ import Toast from 'react-native-easy-toast';
 import Loading from '../../components/Loading';
 
 import { firebaseApp } from '../../utils/firebase';
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import 'firebase/firestore';
 
 const db = firebase.firestore(firebaseApp);

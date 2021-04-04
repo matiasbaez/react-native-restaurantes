@@ -1,6 +1,6 @@
 
-import React, { useCallback, useRef, useState } from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import React, { useCallback, useRef, useEffect, useState } from 'react';
+import { StyleSheet, View, Text, Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useFocusEffect } from '@react-navigation/native';
 import { Rating, ListItem, Icon } from 'react-native-elements';
@@ -13,7 +13,7 @@ import Loading from '../../components/Loading';
 import Map from '../../components/Map';
 
 import { firebaseApp } from '../../utils/firebase';
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import 'firebase/firestore';
 
 const db = firebase.firestore(firebaseApp);
@@ -29,13 +29,11 @@ export default function Restaurant(props) {
     const [isLogged, setIsLogged] = useState(false);
     const [rating, setRating] = useState(0);
 
-    navigation.setOptions({ title: name });
-
     firebase.auth().onAuthStateChanged((user) => setIsLogged(!!user));
 
     useFocusEffect(
         useCallback(() => {
-            db.collection('restaurans')
+            db.collection('restaurants')
             .doc(id)
             .get()
             .then((response) => {
@@ -48,6 +46,8 @@ export default function Restaurant(props) {
     );
 
     useEffect(() => {
+        navigation.setOptions({ title: name });
+
         if (isLogged && restaurant) {
             db.collection('favorites')
             .where('restaurant', '==', restaurant.id)
@@ -191,16 +191,14 @@ function RestaurantInfo(props) {
                 height={100}
                 name={name}
                 location={location} />
+
             { map(listInfo, (item, index) => (
-                <ListItem
-                    key={index}
-                    title={item.text}
-                    leftIcon={{
-                        name: item.iconName,
-                        type: item.iconType,
-                        color: "#00a680"
-                    }}
-                    containerStyle={styles.listItemContainer} />
+                <ListItem key={index}>
+                    <Icon type={item.iconType} name={item.iconName} color="#00a680" />
+                    <ListItem.Content containerStyle={styles.listItemContainer}>
+                        <ListItem.Title>{item.text}</ListItem.Title>
+                    </ListItem.Content>
+                </ListItem>
             )) }
         </View>
     )
@@ -210,7 +208,7 @@ function RestaurantInfo(props) {
 const styles = StyleSheet.create({
     viewBody: {
         flex: 1,
-        backgoundColor: "#fff"
+        backgroundColor: "#fff"
     },
     restaurantViewTitle: {
         padding: 15

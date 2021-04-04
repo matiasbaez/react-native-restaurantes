@@ -70,6 +70,7 @@ function Restaurant(props) {
 
 function FooterList(props) {
     const { isLoading } = props;
+
     if (isLoading) {
         return (
             <View style={styles.restaurantsLoader}>

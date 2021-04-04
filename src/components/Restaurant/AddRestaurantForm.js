@@ -4,7 +4,7 @@ import { StyleSheet, View, ScrollView, Alert, Dimensions } from 'react-native';
 import { Icon, Avatar, Image, Input, Button } from 'react-native-elements';
 import { map, size, filter } from 'lodash';
 import { firebaseApp } from '../../utils/firebase';
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 import MapView from 'react-native-maps';
 import Modal from '../Modal';
@@ -343,7 +343,7 @@ const styles = StyleSheet.create({
     },
     mapStyle: {
         width: "100%",
-        height: "550px"
+        height: 550
     },
     btnViewMap: {
         flexDirection: "row",

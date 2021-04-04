@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 export default function ChangeDisplayName(props) {
     const { displayName, setShowModal, toastRef, setReloadUserInfo } = props;
@@ -31,7 +31,6 @@ export default function ChangeDisplayName(props) {
                     setShowModal(false);
                 })
                 .catch((e) => {
-                    console.log(e);
                     setError("Error al actualizar el nombre.");
                     setIsLoading(false);
                 });

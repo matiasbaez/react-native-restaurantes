@@ -8,7 +8,7 @@ import { validateEmail } from '../../utils/Validations';
 import Loading from '../Loading';
 
 import { size, isEmpty } from 'lodash';
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 export default function RegisterForm(props) {
 
